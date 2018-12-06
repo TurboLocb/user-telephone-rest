@@ -18,7 +18,7 @@ public class UserController {
         this.usersService = usersService;
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/{userId}")
     public User getUserById(@PathVariable Long userId) {
         return usersService.getUserById(userId);
     }
@@ -41,12 +41,10 @@ public class UserController {
         return theUser;
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/user/{userId}")
     public int deleteUser(@PathVariable Long userId) {
         usersService.delete(userId);
         return HttpStatus.OK.value();
     }
-
-
 
 }

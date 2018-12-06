@@ -15,22 +15,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "users")
-    private String users;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "telephone")
+    private Long telephone;
 
     public Long getId() {
         return id;
     }
 
-    public String getUsers() {
-        return users;
+    public String getName() {
+        return name;
+    }
+
+    public Long getTelephone() {
+        return telephone;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setUsers(String users) {
-        this.users = users;
+    public void setName(String users) {
+        this.name = name;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
     }
 }
