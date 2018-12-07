@@ -2,6 +2,7 @@ package com.turbolocb.usertelephonerest.services;
 
 import com.turbolocb.usertelephonerest.entities.User;
 import com.turbolocb.usertelephonerest.repositories.UsersRepository;
+import com.turbolocb.usertelephonerest.utils.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class UsersService {
     public User getUserById(Long id) {
         Optional<User> user = usersRepository.findById(id);
         if(!user.isPresent()) {
-            System.out.printf("Пользователь с данным id" + id + "не найден");
+            throw new UserNotFoundException("Пользователь с данным Id" +id +"не найден");
         }
         return user.get();
     }
@@ -32,7 +33,7 @@ public class UsersService {
     public void delete(Long id) {
         Optional<User> user = usersRepository.findById(id);
         if(!user.isPresent()) {
-            System.out.printf("Пользователь с данным id" + id + "не найден");
+            throw new UserNotFoundException("Пользователь с данным Id" +id +"не найден");
         }
         usersRepository.delete(user.get());
     }
